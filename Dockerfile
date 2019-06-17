@@ -41,10 +41,10 @@ ENV CONDA_PREFIX=/home/user/miniconda/envs/$CONDA_DEFAULT_ENV
 ENV PATH=$CONDA_PREFIX/bin:$PATH
 
 # Install jupyter and additional packages
-RUN conda install -y jupyter matplotlib scikit-learn tqdm pandas cython cffi
+RUN conda install -y jupyter matplotlib scikit-learn tqdm pandas cython cffi seaborn
 
 # Copy data to container
 COPY ./ /workspace/
 
 # Set the default command to python3
-CMD ["jupyter", "notebook", "--ip=0.0.0.0"]
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--allow-root", "--NotebookApp.token=''", "--port=8888"]
